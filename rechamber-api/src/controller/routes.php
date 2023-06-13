@@ -6,11 +6,11 @@ require_once 'UserController.php';
 
 $user_controller = new UserController();
 
-$base_path = "/rechamper/rechamper-api";
+$base_path = "/rechamber/rechamber-api";
 
 $routes = array(
     'GET ' . $base_path . '/api/v1/users' => array('controller' => $user_controller, 'method' => 'handleGetRequest'),
-    'POST ' . $base_path . '/api/V1/users' => array('controller' => $user_controller, 'method' => 'handlePostRequest'),
+    'POST ' . $base_path . '/api/v1/users' => array('controller' => $user_controller, 'method' => 'handlePostRequest'),
 );
 
 $method = $_SERVER['REQUEST_METHOD'];
