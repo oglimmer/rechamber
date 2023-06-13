@@ -1,15 +1,25 @@
 <?php
 namespace Model;
 
-class UserModel {
+class UserDTO {
+    private $id;
     private $username;
     private $email;
     private $password;
 
-    public function __construct(string $username, string $email, string $password) {
+    public function __construct(string $id, string $username, string $email, string $password) {
+        $this->id = $id;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
+    }
+
+    public function getId(): string {
+        return $this->id;
+    }
+
+    public function setId(string $id): void {
+        $this->id = $id;
     }
 
     public function getUsername(): string {

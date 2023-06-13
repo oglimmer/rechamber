@@ -10,11 +10,12 @@ $base_path = "/rechamber/rechamber-api";
 
 $routes = array(
     'GET ' . $base_path . '/api/v1/users' => array('controller' => $user_controller, 'method' => 'handleGetRequest'),
-    'POST ' . $base_path . '/api/v1/users' => array('controller' => $user_controller, 'method' => 'handlePostRequest'),
 );
 
 $method = $_SERVER['REQUEST_METHOD'];
 $endpoint = $_SERVER['REQUEST_URI'];
+$queryString = parse_url($endpoint, PHP_URL_QUERY);
+$endpoint = parse_url($endpoint, PHP_URL_PATH);
 
 header('Content-Type: application/json');
 
@@ -22,7 +23,18 @@ if (isset($routes[$method . ' ' . $endpoint])) {
     $route = $routes[$method . ' ' . $endpoint];
     $controller = $route['controller'];
     $methodToCall = $route['method'];
-    $responseData = $controller->$methodToCall();
+    if ($method === "GET") {
+        $params = array();
+        if (!empty($queryString)) {
+            parse_str($queryString, $params);
+        }
+        $responseData = $controller->$methodToCall($params);
+    } else if ($method === "POST") {
+        if (isset($_POST)) {
+            $body = $_POST;
+        }
+        $responseData = $controller->$methodToCall($body);
+    }
     echo $responseData;
 } else {
     http_response_code(404);
