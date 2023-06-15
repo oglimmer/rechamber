@@ -1,5 +1,5 @@
 <?php
-namespace app\Model;
+namespace app\model;
 
 class UserModel {
     private string $username;

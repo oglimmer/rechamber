@@ -1,9 +1,9 @@
 <?php
 
-namespace app\Database;
+namespace app\database;
 
-use app\Model\UserDTO;
-use app\Model\UserModel;
+use app\model\UserDTO;
+use app\model\UserModel;
 
 class UserDao
 {

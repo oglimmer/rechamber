@@ -2,7 +2,7 @@
 
 require_once "../vendor/autoload.php";
 
-use app\Controller\UserController;
+use app\controller\UserController;
 
 // Define controllers
 $user_controller = new UserController();

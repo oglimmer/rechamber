@@ -1,12 +1,12 @@
 <?php
 
-namespace app\Database;
+namespace app\database;
 
 use mysqli;
 
-use app\Config\Config;
+use app\config\Config;
 
-class Dao
+class DAO
 {
     private mysqli $conn;
 

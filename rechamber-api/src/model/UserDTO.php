@@ -1,5 +1,5 @@
 <?php
-namespace app\Model;
+namespace app\model;
 
 class UserDTO {
     private string $id;
