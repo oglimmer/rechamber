@@ -1,9 +1,9 @@
 <?php
 
-namespace app\Service;
+namespace app\service;
 
-use app\Model\UserDTO;
-use app\Model\UserModel;
+use app\model\UserDTO;
+use app\model\UserModel;
 
 interface UserService
 {

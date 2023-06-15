@@ -1,10 +1,10 @@
 <?php
 
-namespace app\Service;
+namespace app\service;
 
-use app\Database\UserDao;
-use app\Model\UserDTO;
-use app\Model\UserModel;
+use app\database\UserDao;
+use app\model\UserDTO;
+use app\model\UserModel;
 
 class UserServiceImpl implements UserService
 {

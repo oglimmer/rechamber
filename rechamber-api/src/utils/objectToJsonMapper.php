@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils;
+namespace app\utils;
 
 use ReflectionClass;
 use ReflectionException;
