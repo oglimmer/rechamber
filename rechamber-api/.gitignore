@@ -10,3 +10,4 @@ docker-compose.yml
 src/config/
 .vscode
 db_data
+init.sql

@@ -1,15 +1,15 @@
 <?php
 
-namespace app\controller;
+namespace app\Controller;
 
 use ReflectionException;
 
-use app\database\DAO;
-use app\database\UserDao;
-use app\service\UserService;
-use app\model\UserModel;
-use app\service\UserServiceImpl;
-use function utils\getObjectProperties;
+use app\Database\DAO;
+use app\Database\UserDao;
+use app\Service\UserService;
+use app\Model\UserModel;
+use app\Service\UserServiceImpl;
+use function app\utils\getObjectProperties;
 
 class UserController
 {
