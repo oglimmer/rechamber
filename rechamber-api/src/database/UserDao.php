@@ -1,9 +1,9 @@
 <?php
 
-namespace app\database;
+namespace app\Database;
 
-use app\model\UserDTO;
-use app\model\UserModel;
+use app\Model\UserDTO;
+use app\Model\UserModel;
 
 class UserDao
 {
@@ -22,6 +22,10 @@ class UserDao
 
         $result = $stmt->get_result();
 
+        if (!$result->num_rows > 0) {
+            return array();
+        }
+
         return $result->fetch_assoc();
     }
 
@@ -34,7 +38,7 @@ class UserDao
 
         $result = $stmt->get_result();
 
-        if ($result->num_rows > 0) {
+        if (!$result->num_rows > 0) {
             return null;
         }
 
@@ -57,7 +61,7 @@ class UserDao
 
         $result = $stmt->get_result();
 
-        if ($result->num_rows > 0) {
+        if (!$result->num_rows > 0) {
             return null;
         }
 

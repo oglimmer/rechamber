@@ -1,10 +1,10 @@
 <?php
 
-namespace app\database;
+namespace app\Database;
 
 use mysqli;
 
-use app\config\Config;
+use app\Config\Config;
 
 class DAO
 {

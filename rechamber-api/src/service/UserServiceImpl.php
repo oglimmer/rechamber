@@ -1,10 +1,10 @@
 <?php
 
-namespace app\service;
+namespace app\Service;
 
-use app\database\UserDao;
-use app\model\UserDTO;
-use app\model\UserModel;
+use app\Database\UserDao;
+use app\Model\UserDTO;
+use app\Model\UserModel;
 
 class UserServiceImpl implements UserService
 {
@@ -20,7 +20,7 @@ class UserServiceImpl implements UserService
         return $this->user_dao->findUsers();
     }
 
-    public function getUser(string $id): UserDTO
+    public function getUser(string $id): ?UserDTO
     {
         return $this->user_dao->findUser($id);
     }

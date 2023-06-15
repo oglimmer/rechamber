@@ -1,6 +1,6 @@
 <?php
 
-namespace app\utils;
+namespace app\Utils;
 
 use ReflectionClass;
 use ReflectionException;
@@ -16,8 +16,8 @@ function getObjectProperties($object): array {
   
     foreach ($properties as $property) {
         $propertyName = $property->getName();
-      $propertyValue = $property->getValue($object);
-      $data[$propertyName] = $propertyValue;
+        $propertyValue = $property->getValue($object);
+        $data[$propertyName] = $propertyValue;
     }
   
     return $data;
