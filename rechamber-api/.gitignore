@@ -6,7 +6,5 @@
 /.env
 /.env.*
 /.idea
-docker-compose.yml
-src/config/
 .vscode
 db_data
