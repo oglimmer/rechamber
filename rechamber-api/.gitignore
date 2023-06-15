@@ -6,8 +6,7 @@
 /.env
 /.env.*
 /.idea
-# Exclude Docker related files and directories
 docker-compose.yml
-Dockerfile
 src/config/
 .vscode
+db_data

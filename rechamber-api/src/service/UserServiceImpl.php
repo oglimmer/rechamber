@@ -1,16 +1,14 @@
 <?php
 
-namespace Service;
+namespace app\Service;
 
-use Exception;
-
-use Database\UserDao;
-use Model\UserDTO;
-use Model\UserModel;
+use app\Database\UserDao;
+use app\Model\UserDTO;
+use app\Model\UserModel;
 
 class UserServiceImpl implements UserService
 {
-    private $user_dao;
+    private UserDao $user_dao;
 
     public function __construct(UserDao $user_dao)
     {
@@ -24,33 +22,17 @@ class UserServiceImpl implements UserService
 
     public function getUser(string $id): UserDTO
     {
-        $user = $this->user_dao->findUser($id);
-
-        if (!isset($user)) {
-            throw new Exception("User does not exists.");
-        }
-
-        return $user;
+        return $this->user_dao->findUser($id);
     }
 
     public function createUser(UserModel $user_model): void
     {
-        $user = $this->user_dao->findUserByEmail($user_model->getEmail());
-
-        if (isset($user)) {
-            throw new Exception("User already exists.");
-        }
-
         $this->user_dao->createUser($user_model);
     }
 
     public function updateUser(string $id, UserModel $user_model): void
     {
         $user = $this->user_dao->findUser($id);
-
-        if (!isset($user)) {
-            throw new Exception("User does not exists.");
-        }
 
         $user->setUsername($user_model->getUsername());
         $user->setEmail($user_model->getEmail());
@@ -61,12 +43,6 @@ class UserServiceImpl implements UserService
 
     public function deleteUser(string $id): void
     {
-        $user = $this->user_dao->findUser($id);
-
-        if (!isset($user)) {
-            throw new Exception("User does not exists.");
-        }
-
         $this->user_dao->deleteUser($id);
     }
 }

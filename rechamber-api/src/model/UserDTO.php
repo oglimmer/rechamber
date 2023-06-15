@@ -1,11 +1,11 @@
 <?php
-namespace Model;
+namespace app\Model;
 
 class UserDTO {
-    private $id;
-    private $username;
-    private $email;
-    private $password;
+    private string $id;
+    private string $username;
+    private string $email;
+    private string $password;
 
     public function __construct(string $id, string $username, string $email, string $password) {
         $this->id = $id;

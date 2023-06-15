@@ -3,4 +3,4 @@ RewriteBase /rechamber/rechamber-api/api/v1/
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /rechamber/rechamber-api/src/controller/routes.php [L,QSA]
+RewriteRule ^(.*)$ /rechamber/rechamber-api/public/index.php [L,QSA]

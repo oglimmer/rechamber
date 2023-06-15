@@ -1,13 +1,13 @@
 <?php
 
-namespace Database;
+namespace app\Database;
 
-use Model\UserDTO;
-use Model\UserModel;
+use app\Model\UserDTO;
+use app\Model\UserModel;
 
 class UserDao
 {
-    public $dao;
+    public Dao $dao;
 
     public function __construct(Dao $dao)
     {
@@ -25,7 +25,7 @@ class UserDao
         return $result->fetch_assoc();
     }
 
-    public function findUser(string $id): UserDTO
+    public function findUser(string $id): ?UserDTO
     {
         $query = "SELECT * FROM users WHERE id = ?";
         $stmt = $this->dao->getConnection()->prepare($query);
@@ -45,12 +45,10 @@ class UserDao
         $email = $data["email"];
         $password = $data["password"];
 
-        $user = new UserDTO($id, $username, $email, $password);
-
-        return $user;
+        return new UserDTO($id, $username, $email, $password);
     }
 
-    public function findUserByEmail(string $email): UserDTO
+    public function findUserByEmail(string $email): ?UserDTO
     {
         $query = "SELECT * FROM users WHERE email = ?";
         $stmt = $this->dao->getConnection()->prepare($query);
@@ -70,9 +68,7 @@ class UserDao
         $email = $data["email"];
         $password = $data["password"];
 
-        $user = new UserDTO($id, $username, $email, $password);
-
-        return $user;
+        return new UserDTO($id, $username, $email, $password);
     }
 
     public function createUser(UserModel $user_dto): void
@@ -91,6 +87,9 @@ class UserDao
     {
         $query = "UPDATE users SET username = ?, SET email = ?, password = ? WHERE id = ?";
         $stmt = $this->dao->getConnection()->prepare($query);
+        $username = $user_model->getUsername();
+        $email = $user_model->getEmail();
+        $password = password_hash($user_model->getPassword(), PASSWORD_DEFAULT);
         $stmt->bind_param("ssss", $username, $email, $password, $id);
         $stmt->execute();
     }

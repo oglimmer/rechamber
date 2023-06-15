@@ -1,10 +1,10 @@
 <?php
-namespace Model;
+namespace app\Model;
 
 class UserModel {
-    private $username;
-    private $email;
-    private $password;
+    private string $username;
+    private string $email;
+    private string $password;
 
     public function __construct(string $username, string $email, string $password) {
         $this->username = $username;

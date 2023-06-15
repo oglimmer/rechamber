@@ -3,16 +3,19 @@
 namespace Utils;
 
 use ReflectionClass;
+use ReflectionException;
 use ReflectionProperty;
 
-function getObjectProperties($object) {
+/**
+ * @throws ReflectionException
+ */
+function getObjectProperties($object): array {
     $reflectionClass = new ReflectionClass($object);
     $properties = $reflectionClass->getProperties(ReflectionProperty::IS_PRIVATE);
     $data = [];
   
     foreach ($properties as $property) {
-      $property->setAccessible(true);
-      $propertyName = $property->getName();
+        $propertyName = $property->getName();
       $propertyValue = $property->getValue($object);
       $data[$propertyName] = $propertyValue;
     }
